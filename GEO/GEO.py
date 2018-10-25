@@ -12,19 +12,5 @@ for i in range(len(seaf) // 2):
 out = open('ratio.txt', 'w')
 
 land_data = netCDF4.Dataset('topo.nc')
-land_temp = land_data.variables['topo'][:]
-#для ускорения, python быстрее работает с линейными массивами ЗНАЧИТЕЛЬНО быстрее. 
-land = [item for sublist in land_temp for item in sublist] 
-
+land = land_data.variables['topo'][:]
 #print(land.variables.keys()) //['lon', 'lat', 'topo']
-
-for t, h in sea:
-    count = 0
-    for i in range(len(land)):
-            if (land[i] > h):
-                count += 1
-    out.write(str(t) + ' ' + str(count / land_data.variables["topo"].shape[0] / land_data.variables["topo"].shape[1]) 
-              + ' ')
-    print('\r', t // 100, end = '     ')
-
-out.close()

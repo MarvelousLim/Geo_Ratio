@@ -3,7 +3,9 @@ import netCDF4
 
 def make_haste(t, i, j):
     #dont read this
+    #mask of altitudes within range of bigger scale altitude step
     msk_lat = [k for k in range(len(land_data.variables['lat'][:])) if(land_data.variables['lat'][:][k] > frozen_data.variables['lat'][:][i]) & (land_data.variables['lat'][:][k] < frozen_data.variables['lat'][:][i + 1])]
+    #mask of lon...
     msk_lon = [12 * j + k for k in range(12)]
 
     count_all = len(msk_lat) * len(msk_lon)

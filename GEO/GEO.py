@@ -35,7 +35,7 @@ land = land_data.variables['topo'][:]
 #print(land.variables.keys()) //['lon', 'lat', 'topo']
 frozen_data = netCDF4.Dataset('dptmask65.nc')
 frozen = frozen_data.variables['dp'][:, 0, :, :] #['time', 'lon', 'lat', 'lev', 'dp']
-
+    
 
 out = open('frozen_ratio.txt', 'w')
 for t in range(len(frozen_data.variables['time'][:])):
